@@ -1,3 +1,4 @@
+USE livejournal_db;
 -- Table `users`
 CREATE TABLE IF NOT EXISTS `users`
 (
