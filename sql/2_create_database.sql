@@ -1,0 +1,1 @@
+CREATE DATABASE `livejournal_db` DEFAULT CHARACTER SET utf8;
