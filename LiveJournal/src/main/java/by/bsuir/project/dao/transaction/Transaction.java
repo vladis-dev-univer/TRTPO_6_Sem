@@ -1,7 +1,8 @@
 package by.bsuir.project.dao.transaction;
 
-import by.vladis.poetrylike.dao.Dao;
-import by.vladis.poetrylike.exception.PersistentException;
+
+import by.bsuir.project.dao.Dao;
+import by.bsuir.project.exception.PersistentException;
 
 public interface Transaction {
     <Type extends Dao<?>> Type createDao(Class<Type> key) throws PersistentException;
