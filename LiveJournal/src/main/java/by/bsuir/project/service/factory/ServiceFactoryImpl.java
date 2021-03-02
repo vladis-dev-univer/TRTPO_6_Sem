@@ -4,8 +4,10 @@ import by.bsuir.project.dao.transaction.Transaction;
 import by.bsuir.project.dao.transaction.TransactionFactory;
 import by.bsuir.project.exception.PersistentException;
 import by.bsuir.project.service.Service;
+import by.bsuir.project.service.UserService;
 import by.bsuir.project.service.impl.ServiceImpl;
 import by.bsuir.project.service.impl.ServiceInvocationHandlerImpl;
+import by.bsuir.project.service.impl.UserServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,7 +22,7 @@ public class ServiceFactoryImpl implements ServiceFactory {
     private static final Map<Class<? extends Service>, Class<? extends ServiceImpl>> services = new ConcurrentHashMap<>();
 
     static {
-
+        services.put(UserService.class, UserServiceImpl.class);
     }
 
     private final TransactionFactory factory;

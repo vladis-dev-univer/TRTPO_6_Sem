@@ -7,10 +7,8 @@ import by.bsuir.project.service.factory.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import javax.servlet.http.HttpSession;
+import java.util.*;
 
 public abstract class Action {
     private final Set<Role> allowRoles = new HashSet<>();
@@ -44,20 +42,20 @@ public abstract class Action {
 
 
     public abstract Action.Forward exec(HttpServletRequest request, HttpServletResponse response) throws PersistentException;
-//TODO
-//    protected String getStringFromResourceBundle(HttpSession session, String nameLoc) {
-//        Object localParameter = session.getAttribute("locale");
-//       Locale currentLang;
-//        if (localParameter != null) {
-//            String string = String.valueOf(localParameter);
-//            String[] langParameters = string.split("_");
-//            currentLang = new Locale(langParameters[0], langParameters[1]);
-//        } else {
-//            currentLang = new Locale("en", "US");
-//        }
-//        ResourceBundle resourceBundle = ResourceBundle.getBundle("property.locale", currentLang);
-//        return resourceBundle.getString(nameLoc);
-//    }
+
+    protected String getStringFromResourceBundle(HttpSession session, String nameLoc) {
+        Object localParameter = session.getAttribute("locale");
+       Locale currentLang;
+        if (localParameter != null) {
+            String string = String.valueOf(localParameter);
+            String[] langParameters = string.split("_");
+            currentLang = new Locale(langParameters[0], langParameters[1]);
+        } else {
+            currentLang = new Locale("en", "US");
+        }
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("property.locale", currentLang);
+        return resourceBundle.getString(nameLoc);
+    }
 
     public static class Forward {
         private final String forth;
