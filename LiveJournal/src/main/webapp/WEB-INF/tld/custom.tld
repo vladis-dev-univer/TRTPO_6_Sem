@@ -7,37 +7,15 @@
     <uri>customtags</uri>
     <tag>
         <name>mainTitleTag</name>
-        <tag-class>by.vladis.poetrylike.tag.MainTitleTag</tag-class>
+        <tag-class>by.bsuir.project.tag.MainTitleTag</tag-class>
         <body-content>empty</body-content>
     </tag>
 
-    <tag>
-        <name>pagination</name>
-        <tag-class>by.vladis.poetrylike.tag.PaginationTag</tag-class>
-        <body-content>empty</body-content>
-        <attribute>
-            <name>currentPage</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-            <type>java.lang.Integer</type>
-        </attribute>
-        <attribute>
-            <name>lastPage</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-            <type>java.lang.Integer</type>
-        </attribute>
-        <attribute>
-            <name>url</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-            <type>java.lang.String</type>
-        </attribute>
-    </tag>
+
 
     <tag>
         <name>language</name>
-        <tag-class>by.vladis.poetrylike.tag.LanguageTag</tag-class>
+        <tag-class>by.bsuir.project.tag.LanguageTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
             <name>pageName</name>
