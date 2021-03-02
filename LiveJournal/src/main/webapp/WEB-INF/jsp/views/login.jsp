@@ -20,21 +20,21 @@
           rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<div class="wrapper">
-    <custag:header/>
-    <%--        <c:set var="pageName" value="/login.html"/>--%>
-    <%--        <c:url value="language.html" var="languageUrl"/>--%>
-    <%--        <ctg:language pageName="${pageName}" languageUrl="${languageUrl}"/>--%>
-    <div class="content">
-        <div class="login">
-            <h2 class="login-title"><fmt:message key="signIn.name" bundle="${ rb }"/></h2>
-            <c:url value="/login.html" var="loginUrl"/>
-            <form class="login-container" action="${loginUrl}" method="post">
-                <p>
-                    <label for="login"></label>
-                    <input type="text" id="login" name="login"
-                           placeholder="<fmt:message key="login.name" bundle="${ rb }"/>">
-                </p>
+    <div class="wrapper">
+        <custag:header/>
+        <c:set var="pageName" value="/login.html"/>
+        <c:url value="language.html" var="languageUrl"/>
+        <ctg:language pageName="${pageName}" languageUrl="${languageUrl}"/>
+        <div class="content">
+            <div class="login">
+                <h2 class="login-title"><fmt:message key="signIn.name" bundle="${ rb }"/></h2>
+                <c:url value="/login.html" var="loginUrl"/>
+                <form class="login-container" action="${loginUrl}" method="post">
+                    <p>
+                        <label for="login"></label>
+                        <input type="text" id="login" name="login"
+                               placeholder="<fmt:message key="login.name" bundle="${ rb }"/>">
+                    </p>
                 <p>
                     <label for="password"></label>
                     <input type="password" id="password" name="password" placeholder="<fmt:message key="password.name" bundle="${ rb }"/>">

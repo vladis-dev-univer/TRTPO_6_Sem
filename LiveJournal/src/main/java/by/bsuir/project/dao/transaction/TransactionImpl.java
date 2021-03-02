@@ -2,7 +2,9 @@ package by.bsuir.project.dao.transaction;
 
 
 import by.bsuir.project.dao.Dao;
+import by.bsuir.project.dao.UserDao;
 import by.bsuir.project.dao.database.BaseDaoImpl;
+import by.bsuir.project.dao.database.UserDaoImpl;
 import by.bsuir.project.exception.PersistentException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,7 +24,7 @@ public class TransactionImpl implements Transaction {
 
     //This static block for filling classMap
     static {
-//        classMap.put();
+        classMap.put(UserDao.class, UserDaoImpl.class);
     }
 
     /**
