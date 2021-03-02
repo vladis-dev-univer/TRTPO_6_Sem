@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
-
 public class DispatcherServlet extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
