@@ -3,6 +3,7 @@ package by.bsuir.project.controller;
 import by.bsuir.project.action.Action;
 import by.bsuir.project.action.LoginAction;
 import by.bsuir.project.action.MainAction;
+import by.bsuir.project.action.RegisterAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,6 +22,7 @@ public class ActionFromUriFilter implements Filter {
         actions.put("/", MainAction.class);
         actions.put("/index", MainAction.class);
         actions.put("/login", LoginAction.class);
+        actions.put("/register", RegisterAction.class);
     }
 
     @Override
