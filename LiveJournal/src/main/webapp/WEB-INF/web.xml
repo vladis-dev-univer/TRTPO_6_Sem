@@ -61,10 +61,10 @@
         <url-pattern>*.html</url-pattern>
     </filter-mapping>
 
-    <!--    <error-page>-->
-    <!--        <error-code>404</error-code>-->
-    <!--        <location>/WEB-INF/jsp/error.jsp</location>-->
-    <!--    </error-page>-->
+        <error-page>
+            <error-code>404</error-code>
+            <location>/WEB-INF/jsp/error.jsp</location>
+        </error-page>
 
     <!-- <context-param>
          <param-name>log4j-config-location</param-name>
