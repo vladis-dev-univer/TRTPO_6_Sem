@@ -1,6 +1,8 @@
 package by.bsuir.project.controller;
 
 import by.bsuir.project.action.Action;
+import by.bsuir.project.action.LoginAction;
+import by.bsuir.project.action.MainAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -10,23 +12,15 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * Action filter used to link commands to url
- *
- * @author Laikov Vlad
- * @version 1.0
- */
 public class ActionFromUriFilter implements Filter {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     private static final Map<String, Class<? extends Action>> actions = new ConcurrentHashMap<>();
 
     static {
-    }
-
-    @Override
-    public void destroy() {
-        //Default empty method
+        actions.put("/", MainAction.class);
+        actions.put("/index", MainAction.class);
+        actions.put("/login", LoginAction.class);
     }
 
     @Override

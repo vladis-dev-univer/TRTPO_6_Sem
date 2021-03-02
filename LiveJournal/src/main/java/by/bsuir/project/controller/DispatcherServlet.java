@@ -1,7 +1,13 @@
 package by.bsuir.project.controller;
 
+import by.bsuir.project.action.Action;
+import by.bsuir.project.action.ActionManager;
+import by.bsuir.project.action.ActionManagerFactory;
 import by.bsuir.project.dao.pool.ConnectionPool;
+import by.bsuir.project.dao.transaction.TransactionFactoryImpl;
 import by.bsuir.project.exception.PersistentException;
+import by.bsuir.project.service.factory.ServiceFactory;
+import by.bsuir.project.service.factory.ServiceFactoryImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,6 +20,10 @@ import java.util.ResourceBundle;
 
 public class DispatcherServlet extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
+
+    public ServiceFactory getFactory() throws PersistentException {
+        return new ServiceFactoryImpl(new TransactionFactoryImpl());
+    }
 
     @Override
     public void init() {
@@ -41,8 +51,36 @@ public class DispatcherServlet extends HttpServlet {
         process(request, response);
     }
 
-    private void process(HttpServletRequest request, HttpServletResponse response) {
+    private void process(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+        Action action = (Action) request.getAttribute("action");
+        try {
+            ActionManager actionManager = ActionManagerFactory.getManager(getFactory());
+            Action.Forward forward = actionManager.execute(action, request, response);
+            actionManager.close();
 
+            String requestedUri = request.getRequestURI();
+            if (forward != null && forward.isRedirect()) {
+                String redirectedUri = request.getContextPath() + forward.getForth();
+                String strDebug = "Request for URI " + requestedUri + " id redirected to URI " + redirectedUri;
+                logger.debug(strDebug);
+                response.sendRedirect(redirectedUri);
+            } else {
+                String jspPage;
+                if (forward != null) {
+                    jspPage = forward.getForth();
+                } else {
+                    jspPage = action.getName() + ".jsp";
+                }
+                jspPage = "/WEB-INF/jsp/views" + jspPage;
+                String strDebug = "Request for URI " + requestedUri + " is forwarded to JSP " + jspPage;
+                logger.debug(strDebug);
+                getServletContext().getRequestDispatcher(jspPage).forward(request, response);
+            }
+        } catch (PersistentException e) {
+            logger.error("It is impossible to process request", e);
+            request.setAttribute("error", "Data processing error");
+            getServletContext().getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
+        }
     }
 
 }
