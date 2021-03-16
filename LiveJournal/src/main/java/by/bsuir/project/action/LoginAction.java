@@ -40,7 +40,7 @@ public class LoginAction extends Action {
             UserService service = factory.getService(UserService.class);
             User user = service.findByLoginAndPassword(login, password);
             if (user != null) {
-                //UtilValidation.updatePublicationListInUser(user, factory);
+                //TODO:UtilValidation.updatePublicationListInUser(user, factory);
                 HttpSession session = request.getSession();
                 session.setAttribute(Constant.AUTHORIZED_USER, user);
                 session.setAttribute(Constant.MENU, menu.get(user.getRole()));

@@ -1,9 +1,8 @@
 package by.bsuir.project.controller;
 
-import by.bsuir.project.action.Action;
-import by.bsuir.project.action.LoginAction;
-import by.bsuir.project.action.MainAction;
-import by.bsuir.project.action.RegisterAction;
+import by.bsuir.project.action.*;
+import by.bsuir.project.action.admin.AdminProfileAction;
+import by.bsuir.project.action.menu.HomeAction;
 import by.bsuir.project.action.user.UserProfileAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,8 +21,16 @@ public class ActionFromUriFilter implements Filter {
     static {
         actions.put("/", MainAction.class);
         actions.put("/index", MainAction.class);
+
+        actions.put("/language", ChangeLanguage.class);
         actions.put("/login", LoginAction.class);
+        actions.put("/logout", LogoutAction.class);
         actions.put("/register", RegisterAction.class);
+
+        actions.put("/menu/home", HomeAction.class);
+
+        actions.put("/admin/profile", AdminProfileAction.class);
+
         actions.put("/user/profile", UserProfileAction.class);
     }
 
@@ -68,4 +75,8 @@ public class ActionFromUriFilter implements Filter {
         //Default empty method
     }
 
+    @Override
+    public void destroy() {
+        //Default empty method
+    }
 }
