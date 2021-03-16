@@ -4,9 +4,11 @@ import by.bsuir.project.dao.transaction.Transaction;
 import by.bsuir.project.dao.transaction.TransactionFactory;
 import by.bsuir.project.exception.PersistentException;
 import by.bsuir.project.service.Service;
+import by.bsuir.project.service.UserInfoService;
 import by.bsuir.project.service.UserService;
 import by.bsuir.project.service.impl.ServiceImpl;
 import by.bsuir.project.service.impl.ServiceInvocationHandlerImpl;
+import by.bsuir.project.service.impl.UserInfoServiceImpl;
 import by.bsuir.project.service.impl.UserServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,6 +25,7 @@ public class ServiceFactoryImpl implements ServiceFactory {
 
     static {
         services.put(UserService.class, UserServiceImpl.class);
+        services.put(UserInfoService.class, UserInfoServiceImpl.class);
     }
 
     private final TransactionFactory factory;
