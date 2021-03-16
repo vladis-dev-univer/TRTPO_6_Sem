@@ -2,6 +2,8 @@ package by.bsuir.project.controller;
 
 import by.bsuir.project.action.*;
 import by.bsuir.project.action.admin.AdminProfileAction;
+import by.bsuir.project.action.admin.user.AdminActiveAction;
+import by.bsuir.project.action.admin.user.AdminUserListAction;
 import by.bsuir.project.action.menu.HomeAction;
 import by.bsuir.project.action.user.UserProfileAction;
 import org.apache.logging.log4j.LogManager;
@@ -30,6 +32,8 @@ public class ActionFromUriFilter implements Filter {
         actions.put("/menu/home", HomeAction.class);
 
         actions.put("/admin/profile", AdminProfileAction.class);
+        actions.put("/admin/user/list", AdminUserListAction.class);
+        actions.put("/admin/user/active", AdminActiveAction.class);
 
         actions.put("/user/profile", UserProfileAction.class);
     }
