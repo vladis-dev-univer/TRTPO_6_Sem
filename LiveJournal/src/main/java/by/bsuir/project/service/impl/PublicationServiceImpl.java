@@ -1,9 +1,9 @@
-package by.bsuir.project.service;
+package by.bsuir.project.service.impl;
 
 import by.bsuir.project.dao.PublicationDao;
 import by.bsuir.project.entity.Publication;
 import by.bsuir.project.exception.PersistentException;
-import by.bsuir.project.service.impl.ServiceImpl;
+import by.bsuir.project.service.PublicationService;
 
 import java.util.List;
 

@@ -2,6 +2,7 @@ package by.bsuir.project.validator;
 
 
 import by.bsuir.project.entity.Entity;
+import by.bsuir.project.entity.Publication;
 import by.bsuir.project.entity.UserInfo;
 
 import java.util.HashMap;
@@ -20,6 +21,7 @@ public class ValidatorFactory {
 
     static {
         validators.put(UserInfo.class, UserInfoValidator.class);
+        validators.put(Publication.class, PublicationValidator.class);
     }
 
     @SuppressWarnings("unchecked")

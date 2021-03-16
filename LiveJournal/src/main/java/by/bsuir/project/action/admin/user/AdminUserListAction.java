@@ -4,6 +4,7 @@ import by.bsuir.project.action.admin.AdminAction;
 import by.bsuir.project.entity.User;
 import by.bsuir.project.entity.UserInfo;
 import by.bsuir.project.exception.PersistentException;
+import by.bsuir.project.service.UserInfoService;
 import by.bsuir.project.service.UserService;
 import by.bsuir.project.util.Constant;
 import by.bsuir.project.util.UtilValidation;
@@ -41,27 +42,27 @@ public class AdminUserListAction extends AdminAction {
             request.setAttribute(Constant.CURRENT_PAGE, currentPage);
             request.setAttribute(Constant.LAST_PAGE, lastPage);
 
-//            UtilValidation.deleteAdminFromUserList(users);
-//            request.getSession(false).setAttribute(Constant.ADMIN_USERS_INFO, getUserInfoList(users));
+            UtilValidation.deleteAdminFromUserList(users);
+            request.getSession(false).setAttribute(Constant.ADMIN_USERS_INFO, getUserInfoList(users));
         } catch (NumberFormatException | PersistentException e) {
             logger.error(e.toString());
         }
         return null;
     }
 
-//    private List<UserInfo> getUserInfoList(List<User> users) throws PersistentException {
-//        List<UserInfo> userInfos = new ArrayList<>();
-//        for (User user : users) {
-//            UserInfoService userInfoService = factory.getService(UserInfoService.class);
-//            UserInfo userInfo = userInfoService.findByUserId(user.getId());
-//            if (userInfo == null) {
-//                userInfo = new UserInfo();
-//            }
-//            userInfo.setUser(user);
-//            userInfos.add(userInfo);
-//        }
-//        return userInfos;
-//    }
+    private List<UserInfo> getUserInfoList(List<User> users) throws PersistentException {
+        List<UserInfo> userInfos = new ArrayList<>();
+        for (User user : users) {
+            UserInfoService userInfoService = factory.getService(UserInfoService.class);
+            UserInfo userInfo = userInfoService.findByUserId(user.getId());
+            if (userInfo == null) {
+                userInfo = new UserInfo();
+            }
+            userInfo.setUser(user);
+            userInfos.add(userInfo);
+        }
+        return userInfos;
+    }
 
 
 }
