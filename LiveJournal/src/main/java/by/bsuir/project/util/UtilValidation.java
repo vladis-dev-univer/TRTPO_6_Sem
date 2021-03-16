@@ -1,8 +1,10 @@
 package by.bsuir.project.util;
 
 import by.bsuir.project.entity.Publication;
+import by.bsuir.project.entity.Role;
 import by.bsuir.project.entity.User;
 import by.bsuir.project.exception.PersistentException;
+import by.bsuir.project.service.PublicationService;
 import by.bsuir.project.service.factory.ServiceFactory;
 
 import javax.servlet.http.Cookie;
@@ -98,29 +100,29 @@ public class UtilValidation {
 //        userInfos.removeIf(userInfo -> userInfo.getUser().getRole().equals(Role.ADMINISTRATOR));
 //    }
 
-//    /**
-//     * Method to delete admin from User list
-//     *
-//     * @param users is the list
-//     */
-//    public static void deleteAdminFromUserList(List<User> users) {
-//        users.removeIf(user -> user.getRole().equals(Role.ADMINISTRATOR));
-//    }
+    /**
+     * Method to delete admin from User list
+     *
+     * @param users is the list
+     */
+    public static void deleteAdminFromUserList(List<User> users) {
+        users.removeIf(user -> user.getRole().equals(Role.ADMINISTRATOR));
+    }
 
-//    /**
-//     * Method to save/update publication list into user
-//     *
-//     * @param user    who has a publication list
-//     * @param factory to receive service
-//     * @throws PersistentException if something went wrong
-//     */
-//    public static void updatePublicationListInUser(User user, ServiceFactory factory) throws PersistentException {
-//        user.getPublications().clear();
-//        PublicationService publicationService = factory.getService(PublicationService.class);
-//        List<Publication> publications = publicationService.findByUser(user.getId());
-//        for (Publication publication : publications) {
-//            user.getPublications().add(publication);
-//        }
-//    }
+    /**
+     * Method to save/update publication list into user
+     *
+     * @param user    who has a publication list
+     * @param factory to receive service
+     * @throws PersistentException if something went wrong
+     */
+    public static void updatePublicationListInUser(User user, ServiceFactory factory) throws PersistentException {
+        user.getPublications().clear();
+        PublicationService publicationService = factory.getService(PublicationService.class);
+        List<Publication> publications = publicationService.findByUser(user.getId());
+        for (Publication publication : publications) {
+            user.getPublications().add(publication);
+        }
+    }
 
 }

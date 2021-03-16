@@ -43,7 +43,7 @@ public class UserInfoEditAction extends UserAction {
     }
 
     private boolean checkUserLevel(HttpServletRequest request, UserInfo userInfo, User user) throws PersistentException {
-        //UtilValidation.updatePublicationListInUser(user, factory);
+        UtilValidation.updatePublicationListInUser(user, factory);
         List<Publication> publications = user.getPublications();
         String level;
         if (publications.isEmpty()) {
