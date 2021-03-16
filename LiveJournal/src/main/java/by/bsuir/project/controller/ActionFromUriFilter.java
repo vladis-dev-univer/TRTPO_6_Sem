@@ -6,6 +6,8 @@ import by.bsuir.project.action.admin.user.AdminActiveAction;
 import by.bsuir.project.action.admin.user.AdminUserListAction;
 import by.bsuir.project.action.menu.HomeAction;
 import by.bsuir.project.action.user.UserProfileAction;
+import by.bsuir.project.action.user.userinfo.UserInfoEditAction;
+import by.bsuir.project.action.user.userinfo.UserInfoSaveAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -36,6 +38,8 @@ public class ActionFromUriFilter implements Filter {
         actions.put("/admin/user/active", AdminActiveAction.class);
 
         actions.put("/user/profile", UserProfileAction.class);
+        actions.put("/user/edit", UserInfoEditAction.class);
+        actions.put("/user/save", UserInfoSaveAction.class);
     }
 
     @Override

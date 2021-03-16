@@ -107,13 +107,13 @@ public class UtilValidation {
 //        users.removeIf(user -> user.getRole().equals(Role.ADMINISTRATOR));
 //    }
 
-    /**
-     * Method to save/update publication list into user
-     *
-     * @param user    who has a publication list
-     * @param factory to receive service
-     * @throws PersistentException if something went wrong
-     */
+//    /**
+//     * Method to save/update publication list into user
+//     *
+//     * @param user    who has a publication list
+//     * @param factory to receive service
+//     * @throws PersistentException if something went wrong
+//     */
 //    public static void updatePublicationListInUser(User user, ServiceFactory factory) throws PersistentException {
 //        user.getPublications().clear();
 //        PublicationService publicationService = factory.getService(PublicationService.class);

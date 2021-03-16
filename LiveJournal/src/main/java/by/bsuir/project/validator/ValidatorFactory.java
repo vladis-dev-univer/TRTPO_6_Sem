@@ -2,7 +2,6 @@ package by.bsuir.project.validator;
 
 
 import by.bsuir.project.entity.Entity;
-import by.bsuir.project.entity.Publication;
 import by.bsuir.project.entity.UserInfo;
 
 import java.util.HashMap;
