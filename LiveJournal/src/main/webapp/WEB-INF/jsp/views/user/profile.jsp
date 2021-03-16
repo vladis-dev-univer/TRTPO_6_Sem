@@ -56,41 +56,43 @@
                         <td><input type="text" id="email" value="${authorizedUser.email}" disabled></td>
                     </tr>
                     <tr>
-                        <td><label for="date_of_reg"><fmt:message key="dateOfRegistration.name" bundle="${ rb }"/></label></td>
+                        <td><label for="date_of_reg"><fmt:message key="dateOfRegistration.name"
+                                                                  bundle="${ rb }"/></label></td>
                         <td><input type="text" id="date_of_reg" value="<fmt:formatDate pattern = "yyyy-MM-dd"
                              value = "${authorizedUser.dateOfReg}" />" disabled></td>
                     </tr>
                     <tr>
                         <td><label for="is_active"><fmt:message key="active.name" bundle="${ rb }"/></label></td>
-                        <td><input type="text" id="is_active" value="<fmt:message key="${active}" bundle="${ rb }"/>" disabled></td>
+                        <td><input type="text" id="is_active" value="<fmt:message key="${active}" bundle="${ rb }"/>"
+                                   disabled></td>
                     </tr>
                 </table>
             </form>
-            <%--                <div class="buttons-profile">--%>
-            <%--                    <table>--%>
-            <%--                        <tr>--%>
-            <%--                            <td>--%>
-            <%--                                <c:url value="/user/edit.html" var="userEditUrl"/>--%>
-            <%--                                <form class="edit" action="${userEditUrl}" method="post">--%>
-            <%--                                    <input type="submit" value="<fmt:message key="information.name" bundle="${ rb }"/>">--%>
-            <%--                                </form>--%>
-            <%--                            </td>--%>
-            <%--                            <td>--%>
-            <%--                                <c:url value="/user/public/list.html" var="userListUrl"/>--%>
-            <%--                                <form class="public" action="${userListUrl}" method="post">--%>
-            <%--                                    <input type="hidden" name="authorizedUserId" value="${authorizedUser.id}">--%>
-            <%--                                    <input type="submit" value="<fmt:message key="myPublications.name" bundle="${ rb }"/>">--%>
-            <%--                                </form>--%>
-            <%--                            </td>--%>
-            <%--                            <td>--%>
-            <%--                                <c:url value="/logout.html" var="logoutUrl"/>--%>
-            <%--                                <form class="logout" action="${logoutUrl}" method="post">--%>
-            <%--                                    <input type="submit" value="<fmt:message key="log_out.name" bundle="${ rb }"/>">--%>
-            <%--                                </form>--%>
-            <%--                            </td>--%>
-            <%--                        </tr>--%>
-            <%--                    </table>--%>
-            <%--                </div>--%>
+            <div class="buttons-profile">
+                <table>
+                    <tr>
+                        <td>
+                            <c:url value="/user/edit.html" var="userEditUrl"/>
+                            <form class="edit" action="${userEditUrl}" method="post">
+                                <input type="submit" value="<fmt:message key="information.name" bundle="${ rb }"/>">
+                            </form>
+                        </td>
+                        <td>
+                            <c:url value="/user/public/list.html" var="userListUrl"/>
+                            <form class="public" action="${userListUrl}" method="post">
+                                <input type="hidden" name="authorizedUserId" value="${authorizedUser.id}">
+                                <input type="submit" value="<fmt:message key="myPublications.name" bundle="${ rb }"/>">
+                            </form>
+                        </td>
+                        <td>
+                            <c:url value="/logout.html" var="logoutUrl"/>
+                            <form class="logout" action="${logoutUrl}" method="post">
+                                <input type="submit" value="<fmt:message key="log_out.name" bundle="${ rb }"/>">
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
 
         </div>
     </div>
