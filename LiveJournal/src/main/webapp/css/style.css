@@ -297,3 +297,110 @@ input[type="password"]:focus {
     padding: 10px;
     margin: auto;
 }
+
+/************ EDIT USER ************/
+.edit-user {
+    width: 500px;
+    margin: auto;
+    font-size: 16px;
+}
+
+.edit-user-title,
+.edit-user p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.edit-user-title {
+    background: #16A085;
+    padding: 20px;
+    font-size: 1.4em;
+    font-weight: normal;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFF;
+}
+
+.edit-user-container {
+    background: #EBEBEB;
+    padding: 12px;
+}
+
+.edit-user input[type="submit"] {
+    margin: auto;
+    width: 150px;
+}
+
+.edit-user input {
+    margin-left: 10px;
+    width: 350px;
+}
+
+/************ ADMIN USER LIST ************/
+.admin-user-list-title {
+    background: #16A085;
+    padding: 20px;
+    font-size: 1.4em;
+    margin: auto;
+    font-weight: normal;
+    width: 400px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFF;
+}
+
+/************ PUBLICATIONS ************/
+.public-list-title {
+    background: #16A085;
+    padding: 20px;
+    font-size: 1.4em;
+    margin: auto;
+    font-weight: normal;
+    width: 400px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFF;
+}
+
+.public-list input[type="submit"] {
+    margin-right: 100px;
+    margin-bottom: 50px;
+    float: right;
+}
+
+.publication-table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.publication-table input[type="submit"] {
+    margin: auto;
+}
+
+.publication-table thead tr {
+    background-color: #16A085;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.publication-table th,
+.publication-table td {
+    padding: 12px 15px;
+}
+
+.publication-table tbody tr {
+    border-top: 2px solid #DDDDDD;
+    border-bottom: 2px solid #DDDDDD;
+    text-align: center;
+}
+
+.publication-table tbody tr.active-row {
+    font-weight: bold;
+    color: black;
+    background-color: white;
+}
