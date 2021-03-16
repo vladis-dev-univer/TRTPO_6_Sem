@@ -12,15 +12,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>PoetryLike</title>
+    <title>Live Journal</title>
 </head>
 <body>
 
-<c:url value="/index.html" var="indexUrl"/>
-<form action="${indexUrl}" method="post">
-    <%--        <jsp:forward page="/WEB-INF/jsp/views/menu/home.jsp"/> --%>
-    <jsp:forward page="/WEB-INF/jsp/views/login.jsp"/>
-</form>
+    <c:url value="/index.html" var="indexUrl"/>
+    <form action="${indexUrl}" method="post">
+        <jsp:forward page="/WEB-INF/jsp/views/menu/home.jsp"/>
+    </form>
 
 </body>
 </html>
