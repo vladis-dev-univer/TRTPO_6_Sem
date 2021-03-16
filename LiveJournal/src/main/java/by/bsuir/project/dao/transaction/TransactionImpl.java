@@ -2,9 +2,11 @@ package by.bsuir.project.dao.transaction;
 
 
 import by.bsuir.project.dao.Dao;
+import by.bsuir.project.dao.PublicationDao;
 import by.bsuir.project.dao.UserDao;
 import by.bsuir.project.dao.UserInfoDao;
 import by.bsuir.project.dao.database.BaseDaoImpl;
+import by.bsuir.project.dao.database.PublicationDaoImpl;
 import by.bsuir.project.dao.database.UserDaoImpl;
 import by.bsuir.project.dao.database.UserInfoDaoImpl;
 import by.bsuir.project.exception.PersistentException;
@@ -28,6 +30,7 @@ public class TransactionImpl implements Transaction {
     static {
         classMap.put(UserDao.class, UserDaoImpl.class);
         classMap.put(UserInfoDao.class, UserInfoDaoImpl.class);
+        classMap.put(PublicationDao.class, PublicationDaoImpl.class);
     }
 
     /**
