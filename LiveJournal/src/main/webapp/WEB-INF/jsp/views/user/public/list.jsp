@@ -43,24 +43,22 @@
                 </tr>
                 </thead>
                 <c:forEach items="${publications}" var="publication">
-                <tbody>
-                <tr class="active-row">
-                    <td>${publication.name}</td>
-                    <td>
-                        <label for="text-area-list"></label>
-                        <textarea id="text-area-list" rows="15" cols="40" disabled>
-                                ${publication.content}
-                        </textarea>
-                    </td>
-                    <td><fmt:formatDate pattern="yyyy-MM-dd" value="${publication.publicDate}"/></td>
-                    <td>${publication.genre.title}</td>
-                    <td>
-                        <form action="${userPublicationEditUrl}" method="post">
-                            <input type="hidden" name="newPublic" value="no">
-                            <input type="hidden" name="publicationId" value="${publication.id}">
-                            <input type="submit" value="<fmt:message key="edit.name" bundle="${ rb }"/>">
-                        </form>
-                    </td>
+                    <tbody>
+                    <tr class="active-row">
+                        <td>${publication.name}</td>
+                        <td>
+                            <label for="text-area-list"></label>
+                            <textarea id="text-area-list" rows="15" cols="40" disabled>${publication.content}</textarea>
+                        </td>
+                        <td><fmt:formatDate pattern="yyyy-MM-dd" value="${publication.publicDate}"/></td>
+                        <td>${publication.genre.title}</td>
+                        <td>
+                            <form action="${userPublicationEditUrl}" method="post">
+                                <input type="hidden" name="newPublic" value="no">
+                                <input type="hidden" name="publicationId" value="${publication.id}">
+                                <input type="submit" value="<fmt:message key="edit.name" bundle="${ rb }"/>">
+                            </form>
+                        </td>
                     <td>
                         <c:url value="/user/public/delete.html" var="publicDeleteUrl"/>
                         <form action="${publicDeleteUrl}" method="post">
