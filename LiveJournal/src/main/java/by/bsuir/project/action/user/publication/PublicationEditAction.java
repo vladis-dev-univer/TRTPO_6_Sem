@@ -1,8 +1,10 @@
 package by.bsuir.project.action.user.publication;
 
 import by.bsuir.project.action.user.UserAction;
+import by.bsuir.project.entity.Genre;
 import by.bsuir.project.entity.Publication;
 import by.bsuir.project.exception.PersistentException;
+import by.bsuir.project.service.GenreService;
 import by.bsuir.project.service.PublicationService;
 import by.bsuir.project.util.Constant;
 import org.apache.logging.log4j.LogManager;
@@ -29,7 +31,7 @@ public class PublicationEditAction extends UserAction {
             PublicationService publicationService = factory.getService(PublicationService.class);
             Publication publication = publicationService.findByIdentity(publicationId);
             if (publication != null) {
-                //setGenre(publication);
+                setGenre(publication);
                 if (request.getSession(false).getAttribute(Constant.ERR_MESSAGE) != null) {
                     request.getSession(false).removeAttribute(Constant.ERR_MESSAGE);
                 }
@@ -43,11 +45,10 @@ public class PublicationEditAction extends UserAction {
         return null;
     }
 
-    //TODO: continue publication genre
-//    private void setGenre(Publication publication) throws PersistentException {
-//        GenreService genreService = factory.getService(GenreService.class);
-//        Genre genre = genreService.findByIdentity(publication.getId());
-//        publication.setGenre(genre);
-//    }
+    private void setGenre(Publication publication) throws PersistentException {
+        GenreService genreService = factory.getService(GenreService.class);
+        Genre genre = genreService.findByIdentity(publication.getId());
+        publication.setGenre(genre);
+    }
 
 }

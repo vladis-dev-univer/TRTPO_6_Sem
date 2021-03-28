@@ -1,9 +1,11 @@
 package by.bsuir.project.action.user.publication;
 
 import by.bsuir.project.action.user.UserAction;
+import by.bsuir.project.entity.Genre;
 import by.bsuir.project.entity.Publication;
 import by.bsuir.project.entity.User;
 import by.bsuir.project.exception.PersistentException;
+import by.bsuir.project.service.GenreService;
 import by.bsuir.project.service.PublicationService;
 import by.bsuir.project.util.Constant;
 import org.apache.logging.log4j.LogManager;
@@ -42,7 +44,7 @@ public class PublicationListAction extends UserAction {
             request.setAttribute(Constant.CURRENT_PAGE, currentPage);
             request.setAttribute(Constant.LAST_PAGE, lastPage);
 
-            //setGenre(publications);
+            setGenre(publications);
             request.setAttribute(Constant.PUBLICATIONS, publications);
         } catch (NumberFormatException e) {
             logger.error(e.toString());
@@ -50,12 +52,11 @@ public class PublicationListAction extends UserAction {
         return null;
     }
 
-    //TODO: continue publication genre
-//    private void setGenre(List<Publication> publications) throws PersistentException {
-//        GenreService genreService = factory.getService(GenreService.class);
-//        for (Publication publication : publications) {
-//            Genre genre = genreService.findByIdentity(publication.getId());
-//            publication.setGenre(genre);
-//        }
-//    }
+    private void setGenre(List<Publication> publications) throws PersistentException {
+        GenreService genreService = factory.getService(GenreService.class);
+        for (Publication publication : publications) {
+            Genre genre = genreService.findByIdentity(publication.getId());
+            publication.setGenre(genre);
+        }
+    }
 }

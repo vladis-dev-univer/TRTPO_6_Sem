@@ -6,6 +6,7 @@ import by.bsuir.project.entity.Publication;
 import by.bsuir.project.exception.DateParseException;
 import by.bsuir.project.exception.IncorrectFormDataException;
 import by.bsuir.project.exception.PersistentException;
+import by.bsuir.project.service.GenreService;
 import by.bsuir.project.service.PublicationService;
 import by.bsuir.project.util.Constant;
 import by.bsuir.project.validator.Validator;
@@ -29,7 +30,7 @@ public class PublicationSaveAction extends UserAction {
             Validator<Publication> validator = ValidatorFactory.createValidator(Publication.class);
             assert validator != null;
             Publication publication = validator.validate(request);
-            //saveGenre(publication);
+            saveGenre(publication);
 
             PublicationService publicationService = factory.getService(PublicationService.class);
             publicationService.save(publication);
@@ -53,14 +54,13 @@ public class PublicationSaveAction extends UserAction {
         return forward;
     }
 
-    //TODO: continue publication genre
-//    private void saveGenre(Publication publication) throws PersistentException {
-//        GenreService genreService = factory.getService(GenreService.class);
-//        Genre genre = new Genre();
-//        genre.setTitle(publication.getGenre().getTitle());
-//        genre.setId(publication.getGenre().getId());
-//        genreService.save(genre);
-//        publication.setGenre(genre);
-//    }
+    private void saveGenre(Publication publication) throws PersistentException {
+        GenreService genreService = factory.getService(GenreService.class);
+        Genre genre = new Genre();
+        genre.setTitle(publication.getGenre().getTitle());
+        genre.setId(publication.getGenre().getId());
+        genreService.save(genre);
+        publication.setGenre(genre);
+    }
 
 }
