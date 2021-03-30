@@ -738,3 +738,29 @@ input[type="password"]:focus {
     clear: both;
     display: table;
 }
+
+/************ POET RESULT SEARCH ************/
+.search-result-poet-title {
+    background: #16A085;
+    padding: 20px;
+    font-size: 1.4em;
+    margin: auto;
+    font-weight: normal;
+    width: 400px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFF;
+}
+
+/************ PUBLICATION RESULT SEARCH ************/
+.search-result-publication-title {
+    background: #16A085;
+    padding: 20px;
+    font-size: 1.4em;
+    margin: auto;
+    font-weight: normal;
+    width: 400px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFF;
+}
