@@ -18,6 +18,14 @@
     </jsp-config>
 
     <servlet>
+        <servlet-name>UserInfoImageServlet</servlet-name>
+        <servlet-class>by.bsuir.project.controller.UserInfoImageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserInfoImageServlet</servlet-name>
+        <url-pattern>/user-info-image</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>DispatcherServletName</servlet-name>
         <servlet-class>by.bsuir.project.controller.DispatcherServlet</servlet-class>
     </servlet>

@@ -10,6 +10,15 @@ public class UserInfo extends Entity {
     private String pseudonym;
     private Level level;
     private Date dateOfBirth;
+    private String imgPath;
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
 
     public String getSurname() {
         return surname;
@@ -62,13 +71,14 @@ public class UserInfo extends Entity {
     public UserInfo() {
     }
 
-    public UserInfo(User user, String surname, String name, String pseudonym, Level level, Date dateOfBirth) {
+    public UserInfo(User user, String surname, String name, String pseudonym, Level level, Date dateOfBirth, String imgPath) {
         this.user = user;
         this.surname = surname;
         this.name = name;
         this.pseudonym = pseudonym;
         this.level = level;
         this.dateOfBirth = dateOfBirth;
+        this.imgPath = imgPath;
     }
 
     @Override
@@ -77,16 +87,17 @@ public class UserInfo extends Entity {
         if (!(o instanceof UserInfo)) return false;
         if (!super.equals(o)) return false;
         UserInfo userInfo = (UserInfo) o;
-        return Objects.equals(getUser(), userInfo.getUser()) &&
-                Objects.equals(getSurname(), userInfo.getSurname()) &&
-                Objects.equals(getName(), userInfo.getName()) &&
-                Objects.equals(getPseudonym(), userInfo.getPseudonym()) &&
-                getLevel() == userInfo.getLevel() &&
-                Objects.equals(getDateOfBirth(), userInfo.getDateOfBirth());
+        return Objects.equals(user, userInfo.user) &&
+                Objects.equals(surname, userInfo.surname) &&
+                Objects.equals(name, userInfo.name) &&
+                Objects.equals(pseudonym, userInfo.pseudonym) &&
+                level == userInfo.level &&
+                Objects.equals(dateOfBirth, userInfo.dateOfBirth) &&
+                Objects.equals(imgPath, userInfo.imgPath);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getUser(), getSurname(), getName(), getPseudonym(), getLevel(), getDateOfBirth());
+        return Objects.hash(super.hashCode(), user, surname, name, pseudonym, level, dateOfBirth, imgPath);
     }
 }

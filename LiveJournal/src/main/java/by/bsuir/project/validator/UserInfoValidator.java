@@ -9,6 +9,10 @@ import by.bsuir.project.util.UtilDate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.util.UUID;
 
 /**
  * Validator for user info entity
@@ -77,6 +81,14 @@ public class UserInfoValidator implements Validator<UserInfo> {
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException | DateParseException e) {
             throw new IncorrectFormDataException("date_of_birth", parameter);
         }
+
+        String imageAbsoluteName = getAbsolutePath(request);
+        try {
+            userInfo.setImgPath(imageAbsoluteName);
+        } catch (Exception e) {
+            throw new IncorrectFormDataException("imgPath", parameter);
+        }
+
         return userInfo;
     }
 
@@ -100,5 +112,33 @@ public class UserInfoValidator implements Validator<UserInfo> {
             default:
                 return Level.READER.getName();
         }
+    }
+
+    private String getAbsolutePath(HttpServletRequest request) {
+        String userName = System.getProperty("user.name");
+        File path = new File(File.separator
+                + "Users"
+                + File.separator
+                + userName
+                + File.separator
+                + "photos");
+        if (!path.exists()) {
+            path.mkdir();
+        }
+
+        String imageAbsoluteName = path.getAbsolutePath()
+                + File.separator
+                + UUID.randomUUID().toString().concat(".jpg");
+        File image = new File(imageAbsoluteName);
+
+        try (InputStream fileContent = request.getPart("pngPath").getInputStream();
+             FileOutputStream fileOutputStream = new FileOutputStream(image)) {
+            fileOutputStream.write(fileContent.readAllBytes());
+            fileOutputStream.flush();
+        } catch (Exception e) {
+            request.setAttribute("message", "The attempt of loading image was failed");
+            return null;
+        }
+        return imageAbsoluteName;
     }
 }
