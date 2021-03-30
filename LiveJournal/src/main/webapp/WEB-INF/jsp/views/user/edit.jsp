@@ -43,7 +43,7 @@
         <div class="edit-user">
             <h3 class="edit-user-title"><fmt:message key="${title}" bundle="${ rb }"/>${userInfoName}</h3>
             <c:url value="/user/save.html" var="publicSaveUrl"/>
-            <form class="edit-user-container" action="${publicSaveUrl}" method="post">
+            <form class="edit-user-container" action="${publicSaveUrl}" method="post" enctype="multipart/form-data">
                 <table>
                     <tr>
                         <td><label for="name"><fmt:message key="userInfoName.name" bundle="${ rb }"/>:</label></td>
@@ -68,7 +68,13 @@
                                    min="1821-01-01" max="2022-01-01"></td>
                     </tr>
                 </table>
-
+                <br>
+                <form class="editProductClass">
+                    <div class="fl_upload" style="text-align: right">
+                        <label><input type="file" id="fl_inp" name="pngPath" accept="image/jpeg">choose file</label>
+                        <div id="file_name">file not chosen</div>
+                    </div>
+                </form>
                 <br>
                 <form class="save-user">
                     <input type="submit" value="<fmt:message key="userInfoSave.name" bundle="${ rb }"/>">
@@ -78,6 +84,8 @@
         </div>
     </div>
 </div>
-
+<script type="text/javascript">
+    <%@include file="/js/main.js" %>
+</script>
 </body>
 </html>

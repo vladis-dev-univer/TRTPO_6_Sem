@@ -782,3 +782,30 @@ input[type="password"]:focus {
     text-transform: uppercase;
     color: #FFF;
 }
+
+        .fl_upload {
+        width: 300px;
+        }
+
+        #fl_inp {
+        display: none;
+        }
+
+        .fl_upload label {
+        cursor: pointer;
+        background: #73C6B6;
+        border-radius: 3px;
+        padding: 10px 25px;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+        }
+
+        .fl_upload label:hover {
+        background: #45B39D;
+        }
+
+        #file_name {
+        margin-top: 20px;
+        color: black;
+        }
