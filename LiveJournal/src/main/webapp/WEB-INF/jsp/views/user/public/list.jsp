@@ -76,10 +76,18 @@
                     <p><fmt:message key="thereAreNoPublications.name" bundle="${ rb }"/></p>
                 </c:otherwise>
             </c:choose>
-            <form action="${userPublicationEditUrl}" method="post">
-                <input type="hidden" name="newPublic" value="yes">
-                <input type="submit" value="<fmt:message key="addNewPublication.name" bundle="${ rb }"/>">
-            </form>
+            <c:choose>
+                <c:when test="${authorizedUser.active eq true}">
+                    <form action="${userPublicationEditUrl}" method="post">
+                        <input type="hidden" name="newPublic" value="yes">
+                        <input type="submit" value="<fmt:message key="addNewPublication.name" bundle="${ rb }"/>">
+                    </form>
+                </c:when>
+                <c:otherwise>
+                    <p style="margin: auto; color:#BA4A00; text-align: right"><fmt:message key="youDisableActivity" bundle="${ rb }"/></p>
+                </c:otherwise>
+
+            </c:choose>
         </div>
     </div>
 </div>

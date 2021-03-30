@@ -23,6 +23,7 @@ public class ServiceFactoryImpl implements ServiceFactory {
         services.put(UserInfoService.class, UserInfoServiceImpl.class);
         services.put(PublicationService.class, PublicationServiceImpl.class);
         services.put(GenreService.class, GenreServiceImpl.class);
+        services.put(PublicationCommentService.class, PublicationCommentServiceImpl.class);
     }
 
     private final TransactionFactory factory;

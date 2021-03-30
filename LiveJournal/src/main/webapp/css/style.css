@@ -520,6 +520,24 @@ input[type="password"]:focus {
     color: #FFF;
 }
 
+/************ COMMENTS ************/
+.comment-title, .comment-change-title {
+    background: #16A085;
+    padding: 20px;
+    font-size: 1.4em;
+    margin: auto;
+    font-weight: normal;
+    width: 400px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFF;
+}
+
+.public-comment-edit-container {
+    background: #EBEBEB;
+    padding: 12px;
+}
+
 /************ ALL POETS ************/
 .all-poets-title {
     background: #16A085;
