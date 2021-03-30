@@ -26,6 +26,7 @@ public class TransactionImpl implements Transaction {
         classMap.put(UserInfoDao.class, UserInfoDaoImpl.class);
         classMap.put(PublicationDao.class, PublicationDaoImpl.class);
         classMap.put(GenreDao.class, GenreDaoImpl.class);
+        classMap.put(PublicationCommentDao.class, PublicationCommentDaoImpl.class);
     }
 
     /**

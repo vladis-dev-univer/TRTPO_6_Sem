@@ -3,8 +3,10 @@ package by.bsuir.project.util;
 import by.bsuir.project.entity.Publication;
 import by.bsuir.project.entity.Role;
 import by.bsuir.project.entity.User;
+import by.bsuir.project.entity.UserInfo;
 import by.bsuir.project.exception.PersistentException;
 import by.bsuir.project.service.PublicationService;
+import by.bsuir.project.service.UserService;
 import by.bsuir.project.service.factory.ServiceFactory;
 
 import javax.servlet.http.Cookie;
@@ -74,31 +76,31 @@ public class UtilValidation {
         return currentLang;
     }
 
-//    /**
-//     * MFirst method to delete admin user from UserInfo list
-//     *
-//     * @param usersInfo is the list
-//     * @param factory   to receive service service
-//     * @throws PersistentException if something went wrong
-//     */
-//    public static void deleteAdminFromUserInfoList(List<UserInfo> usersInfo, ServiceFactory factory) throws PersistentException {
-//        for (UserInfo userInfo : usersInfo) {
-//            UserService userService = factory.getService(UserService.class);
-//            User user = userService.findByIdentity(userInfo.getUser().getId());
-//            userInfo.setUser(user);
-//        }
-//        usersInfo.removeIf(userInfo -> userInfo.getUser().getRole().equals(Role.ADMINISTRATOR));
-//    }
+    /**
+     * MFirst method to delete admin user from UserInfo list
+     *
+     * @param usersInfo is the list
+     * @param factory   to receive service service
+     * @throws PersistentException if something went wrong
+     */
+    public static void deleteAdminFromUserInfoList(List<UserInfo> usersInfo, ServiceFactory factory) throws PersistentException {
+        for (UserInfo userInfo : usersInfo) {
+            UserService userService = factory.getService(UserService.class);
+            User user = userService.findByIdentity(userInfo.getUser().getId());
+            userInfo.setUser(user);
+        }
+        usersInfo.removeIf(userInfo -> userInfo.getUser().getRole().equals(Role.ADMINISTRATOR));
+    }
 
-//    /**
-//     * Second method to delete admin user from UserInfo list, without factory
-//     * (if there is already a user inside the object)
-//     *
-//     * @param userInfos is the list
-//     */
-//    public static void deleteAdminFromUserInfoList(List<UserInfo> userInfos) {
-//        userInfos.removeIf(userInfo -> userInfo.getUser().getRole().equals(Role.ADMINISTRATOR));
-//    }
+    /**
+     * Second method to delete admin user from UserInfo list, without factory
+     * (if there is already a user inside the object)
+     *
+     * @param userInfos is the list
+     */
+    public static void deleteAdminFromUserInfoList(List<UserInfo> userInfos) {
+        userInfos.removeIf(userInfo -> userInfo.getUser().getRole().equals(Role.ADMINISTRATOR));
+    }
 
     /**
      * Method to delete admin from User list

@@ -3,12 +3,23 @@ package by.bsuir.project.controller;
 import by.bsuir.project.action.*;
 import by.bsuir.project.action.admin.AdminProfileAction;
 import by.bsuir.project.action.admin.user.AdminActiveAction;
+import by.bsuir.project.action.admin.user.AdminSearchResultAction;
 import by.bsuir.project.action.admin.user.AdminUserListAction;
 import by.bsuir.project.action.menu.HomeAction;
+import by.bsuir.project.action.menu.poets.AllPoetListAction;
+import by.bsuir.project.action.menu.poets.MoreInfoPoetAction;
+import by.bsuir.project.action.menu.poets.SearchPoetResultAction;
+import by.bsuir.project.action.menu.publications.AllPublicationListAction;
+import by.bsuir.project.action.menu.publications.SearchPublicationResultAction;
+import by.bsuir.project.action.menu.publications.comments.PublicationCommentListAction;
 import by.bsuir.project.action.user.UserProfileAction;
+import by.bsuir.project.action.user.publication.PublicationDeleteAction;
 import by.bsuir.project.action.user.publication.PublicationEditAction;
 import by.bsuir.project.action.user.publication.PublicationListAction;
 import by.bsuir.project.action.user.publication.PublicationSaveAction;
+import by.bsuir.project.action.user.publication.comments.DeletePublicationCommentAction;
+import by.bsuir.project.action.user.publication.comments.EditPublicationCommentAction;
+import by.bsuir.project.action.user.publication.comments.SavePublicationCommentAction;
 import by.bsuir.project.action.user.userinfo.UserInfoEditAction;
 import by.bsuir.project.action.user.userinfo.UserInfoSaveAction;
 import org.apache.logging.log4j.LogManager;
@@ -35,6 +46,10 @@ public class ActionFromUriFilter implements Filter {
         actions.put("/register", RegisterAction.class);
 
         actions.put("/menu/home", HomeAction.class);
+        actions.put("/menu/publications/list", AllPublicationListAction.class);
+        actions.put("/menu/publications/comment", PublicationCommentListAction.class);
+        actions.put("/menu/poets/list", AllPoetListAction.class);
+        actions.put("/menu/poets/more", MoreInfoPoetAction.class);
 
         actions.put("/admin/profile", AdminProfileAction.class);
         actions.put("/admin/user/list", AdminUserListAction.class);
@@ -43,10 +58,18 @@ public class ActionFromUriFilter implements Filter {
         actions.put("/user/profile", UserProfileAction.class);
         actions.put("/user/edit", UserInfoEditAction.class);
         actions.put("/user/save", UserInfoSaveAction.class);
+        actions.put("/user/public/comments/edit", EditPublicationCommentAction.class);
+        actions.put("/user/public/comments/save", SavePublicationCommentAction.class);
+        actions.put("/user/public/comments/delete", DeletePublicationCommentAction.class);
 
         actions.put("/user/public/list", PublicationListAction.class);
         actions.put("/user/public/edit", PublicationEditAction.class);
         actions.put("/user/public/save", PublicationSaveAction.class);
+        actions.put("/user/public/delete", PublicationDeleteAction.class);
+
+        actions.put("/search/menu/poet/result", SearchPoetResultAction.class);
+        actions.put("/search/menu/publication/result", SearchPublicationResultAction.class);
+        actions.put("/search/admin/result", AdminSearchResultAction.class);
     }
 
     @Override
