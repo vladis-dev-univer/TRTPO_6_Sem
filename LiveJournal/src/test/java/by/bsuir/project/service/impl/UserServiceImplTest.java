@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 public class UserServiceImplTest {
     private UserService userService;
     private User user;
+    private User newUser;
 
     @BeforeSuite
     public void setUpBeforeSuite() throws PersistentException {
@@ -50,6 +51,27 @@ public class UserServiceImplTest {
         user.setActive(true);
         user.setEmail("user4@mail.com");
         user.setId(4);
+    }
+
+    @BeforeTest
+    public void createNewUser() throws DateParseException {
+        newUser = new User();
+        newUser.setLogin("Vlad");
+        newUser.setPassword(UtilPassword.hashPassword("888"));
+        newUser.setRole(Role.USER);
+        newUser.setDateOfReg(UtilDate.fromString("2001-01-18"));
+        newUser.setActive(true);
+        newUser.setEmail("vlad4@mail.com");
+    }
+
+    @Test
+    public void createInDatabaseNewUser() throws PersistentException {
+        userService.create(newUser);
+    }
+
+    @Test
+    public void deleteUser() throws PersistentException {
+        userService.delete(newUser.getId());
     }
 
     @Test
