@@ -12,7 +12,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="${sessionScope.locale}" scope="session"/>
 <fmt:setBundle basename="property.locale" var="rb"/>
-<c:url value="/user-info-image" var="UserInfoImage"/>
 <c:choose>
     <c:when test="${authorizedUser.active == true}">
         <c:set var="active" value="activeYes.name"/>
@@ -43,11 +42,13 @@
     <c:set var="pageName" value="/user/profile.html"/>
     <c:url value="language.html" var="languageUrl"/>
     <ctg:language pageName="${pageName}" languageUrl="${languageUrl}"/>
+
+<%--    <c:url value="/user-info-image" var="UserInfoImage"/>--%>
     <div class="content">
         <div class="profile">
             <h3 class="profile-title"><fmt:message key="${role}" bundle="${ rb }"/></h3>
             <form class="profile-container">
-                <img class="productImages" src="${UserInfoImage}?path=${userInfo.imgPath}"/>
+<%--                <img class="productImages" src="${UserInfoImage}?path=${userInfo.imgPath}"/>--%>
                 <table>
                     <tr>
                         <td><label for="login"><fmt:message key="login.name" bundle="${ rb }"/>:</label></td>
