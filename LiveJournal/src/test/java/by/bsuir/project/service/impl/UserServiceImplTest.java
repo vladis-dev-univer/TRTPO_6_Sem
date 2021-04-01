@@ -67,11 +67,16 @@ public class UserServiceImplTest {
     @Test
     public void createInDatabaseNewUser() throws PersistentException {
         userService.create(newUser);
+        User foundUser = userService.findByIdentity(newUser.getId());
+        Assert.assertEquals(newUser, foundUser);
     }
+
 
     @Test
     public void deleteUser() throws PersistentException {
         userService.delete(newUser.getId());
+        User foundUser = userService.findByIdentity(newUser.getId());
+        Assert.assertNull(foundUser);
     }
 
     @Test
