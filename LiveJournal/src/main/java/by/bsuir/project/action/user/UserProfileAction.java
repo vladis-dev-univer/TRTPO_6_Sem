@@ -16,11 +16,11 @@ public class UserProfileAction extends AuthorizedUserAction {
 
     @Override
     public Forward exec(HttpServletRequest request, HttpServletResponse response) throws PersistentException {
-        HttpSession session = request.getSession();
-        UserInfoService userInfoService = factory.getService(UserInfoService.class);
-        User user = (User) session.getAttribute(Constant.AUTHORIZED_USER);
-        UserInfo userInfo = userInfoService.findByUserId(user.getId());
-        request.setAttribute("userInfo", userInfo);
+//        HttpSession session = request.getSession();
+//        UserInfoService userInfoService = factory.getService(UserInfoService.class);
+//        User user = (User) session.getAttribute(Constant.AUTHORIZED_USER);
+//        UserInfo userInfo = userInfoService.findByUserId(user.getId());
+//        request.setAttribute("userInfo", userInfo);
         return null;
     }
 }

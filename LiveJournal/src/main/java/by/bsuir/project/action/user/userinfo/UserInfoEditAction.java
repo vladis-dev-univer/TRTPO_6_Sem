@@ -52,7 +52,7 @@ public class UserInfoEditAction extends UserAction {
             userInfo.setLevel(Level.READER);
             return true;
         }
-        if (publications.size() < 15 && publications.size() > 6) {
+        if (publications.size() < 15 && publications.size() >= 6) {
             level = getStringFromResourceBundle(request.getSession(), "levelAmateur.name");
             request.setAttribute(Constant.LEVEL, level);
             userInfo.setLevel(Level.AMATEUR);
@@ -62,7 +62,7 @@ public class UserInfoEditAction extends UserAction {
             request.setAttribute(Constant.LEVEL, level);
             userInfo.setLevel(Level.BEGINNER);
             return true;
-        } else if (publications.size() >= 15) {
+        } else if (publications.size() > 15) {
             level = getStringFromResourceBundle(request.getSession(), "levelProfessional.name");
             request.setAttribute(Constant.LEVEL, level);
             userInfo.setLevel(Level.PROFESSIONAL);

@@ -9,6 +9,7 @@ import by.bsuir.project.util.UtilDate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -42,13 +43,22 @@ public class UserInfoValidator implements Validator<UserInfo> {
             }
         }
         UserInfo userInfoId = (UserInfo) session.getAttribute("userInfo");
-        if(userInfoId != null){
+        if (userInfoId != null) {
             try {
                 userInfo.setId(userInfoId.getId());
             } catch (NumberFormatException e) {
                 throw new IncorrectFormDataException("identity", userInfoId.getId().toString());
             }
         }
+
+//        String imageAbsoluteName = getAbsolutePath(request);
+//        try {
+//            userInfo.setImgPath(imageAbsoluteName);
+//        } catch (Exception e) {
+//            throw new IncorrectFormDataException("imgPath", parameter);
+//        }
+
+
         String parameter = request.getParameter("name");
         if (parameter != null && !parameter.isEmpty()) {
             userInfo.setName(parameter);
@@ -82,15 +92,41 @@ public class UserInfoValidator implements Validator<UserInfo> {
             throw new IncorrectFormDataException("date_of_birth", parameter);
         }
 
-        String imageAbsoluteName = getAbsolutePath(request);
-        try {
-            userInfo.setImgPath(imageAbsoluteName);
-        } catch (Exception e) {
-            throw new IncorrectFormDataException("imgPath", parameter);
-        }
 
         return userInfo;
     }
+
+//    private String getAbsolutePath(HttpServletRequest request) {
+//        String userName = System.getProperty("user.name");
+//        File path = new File(
+//                "C:" +
+//                        File.separator
+//                        + "Users"
+//                        + File.separator
+//                        + userName
+//                        + File.separator
+//                        + "photos");
+//        if (!path.exists()) {
+//            path.mkdir();
+//        }
+//
+//        String imageAbsoluteName = path.getAbsolutePath()
+//                + File.separator
+//                + UUID.randomUUID().toString().concat(".jpg");
+//        File image = new File(imageAbsoluteName);
+//
+//        try {
+//            Part pngPart = request.getPart("jpgPath");
+//            InputStream fileContent = pngPart.getInputStream();
+//            FileOutputStream fileOutputStream = new FileOutputStream(image);
+//            fileOutputStream.write(fileContent.readAllBytes());
+//            fileOutputStream.flush();
+//        } catch (Exception e) {
+//            request.setAttribute("message", "The attempt of loading image was failed");
+//            return null;
+//        }
+//        return imageAbsoluteName;
+//    }
 
     /**
      * Method for convert level in Russian or English formats
@@ -114,31 +150,4 @@ public class UserInfoValidator implements Validator<UserInfo> {
         }
     }
 
-    private String getAbsolutePath(HttpServletRequest request) {
-        String userName = System.getProperty("user.name");
-        File path = new File(File.separator
-                + "Users"
-                + File.separator
-                + userName
-                + File.separator
-                + "photos");
-        if (!path.exists()) {
-            path.mkdir();
-        }
-
-        String imageAbsoluteName = path.getAbsolutePath()
-                + File.separator
-                + UUID.randomUUID().toString().concat(".jpg");
-        File image = new File(imageAbsoluteName);
-
-        try (InputStream fileContent = request.getPart("pngPath").getInputStream();
-             FileOutputStream fileOutputStream = new FileOutputStream(image)) {
-            fileOutputStream.write(fileContent.readAllBytes());
-            fileOutputStream.flush();
-        } catch (Exception e) {
-            request.setAttribute("message", "The attempt of loading image was failed");
-            return null;
-        }
-        return imageAbsoluteName;
-    }
 }
