@@ -4,9 +4,9 @@
 ---------------
 Название сайта: "LiveJournal"
 ---------------
-Мокапы: https://drive.google.com/drive/folders/1oPdrOdbzJQfu0BH4wO8WdiyqIbuXXKwP
+Мокапы: https://drive.google.com/drive/folders/18vZ776Itz2rwFZ9QqfQFnMWUnlyowmoM?usp=sharing
 ---------------
-Видео: https://drive.google.com/drive/folders/14jU07dUoMlo72pxk0JyIuIOARwKQ5afU?usp=sharing
+Видео: https://drive.google.com/drive/folders/1I3ySLn2O5aoJMxT_TRyHcwo_ZxrpgNJu?usp=sharing
 ---------------
 __________________________________________________________________
 На данном сайте можно публиковать любого рода текст, который связан с поэзией:
